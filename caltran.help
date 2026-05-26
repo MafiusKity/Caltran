@@ -1,0 +1,10 @@
+----------------------------------------------------------------------------------
+Usage:
+./caltran -mode "expression" #The " " are important for functions with ( )
+	-mode:
+		-r	#Uses real numbers
+		-c	#Uses complex numbers
+			#Format of complex numbers: (real.decimal,complex.decimal)
+			#Exemple: ./caltran -c "sqrt(-1.0,0.0)"
+		-h	#Print this help
+----------------------------------------------------------------------------------

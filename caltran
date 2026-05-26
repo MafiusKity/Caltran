@@ -1,0 +1,49 @@
+#!/bin/bash
+
+########################################################
+#			Caltran			       #
+#	Author: Mafius Kity			       #
+#	Program to calculate expressions ==============#
+########################################################
+
+while getopts ":r:c:" option; do
+	case $option in
+		r)
+			mode=0
+			;;
+		c)
+			mode=1
+			;;
+		*)
+			cat caltran.help
+			exit 0
+			;;
+	esac
+done
+
+if [[ $# != 2 ]]; then
+	echo "Insert one expression or set the correct mode, pleasse!"
+	echo "caltran -h #For more information"
+	exit 
+fi
+modes=("REAL" "COMPLEX")
+echo "PROGRAM caltran
+IMPLICIT NONE
+${modes[mode]}::return=$2
+PRINT *, return
+END PROGRAM caltran
+">caltran.F95
+command -v gfortran&>/dev/null
+if [[ $? == 0 ]]; then
+	gfortran caltran.F95 -o caltran.out
+	./caltran.out
+	exit
+fi
+command -v lfortran&>/dev/null
+if [[ $? == 0 ]]; then
+	lfortran caltran.F95 -o caltran.out
+	./caltran.out
+	exit
+fi
+echo "Revise lfortran or gfortran package!"
+exit 1

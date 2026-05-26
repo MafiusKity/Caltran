@@ -1,5 +1,7 @@
 # Caltran
 A command line calculator with real and complex numbers
+## Dependences
+You will need lfortran or gfortran in your machine
 ## Download
 ```
 git clone https://github.com/MafiusKity/Caltran
